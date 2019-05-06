@@ -10,8 +10,8 @@ require_once 'views/layout/sidebar.php';
 if(isset($_GET['controller'])){
 	$nombre_controlador = $_GET['controller'].'Controller';
 }else{
-	echo "La pagina que buscas no existe";
-	exit();
+	$error = new errorController ();
+	$error->index();
 }
 
 if(class_exists($nombre_controlador)){
@@ -21,9 +21,11 @@ if(class_exists($nombre_controlador)){
 		$action = $_GET['action'];
 		$controlador->$action();
 	}else{
-		echo "La pagina que buscas no existe";
+		$error = new errorController ();
+		$error->index();
 	}
 }else{
-	echo "La pagina que buscas no existe";
+	$error = new errorController ();
+	$error->index();
 }
 ?>

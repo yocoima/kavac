@@ -3,7 +3,8 @@
 class errorController{
 
   public function index(){
-    echo "La pagina que buscas no existe2222";
+    echo "<h3>La pagina que buscas no existe</h3>";
   }
+}
 
 ?>
