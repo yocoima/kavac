@@ -1,0 +1,40 @@
+#logo img{
+  width: 50px;
+  border-radius: 10px;
+  margin-right: 30;
+  margin-left: 10;
+}
+
+body {
+  background: ;
+}
+
+#lateral{
+  width: 20%;
+  float: left;
+  margin-top: 40px;
+  margin-left: 20px;
+  /* border: 3px solid black; */
+}
+#registro{
+  width: 70%;
+  float: left;
+  margin-top: 40px;
+  margin-left: 40px;
+  /* border: 3px solid black; */
+}
+
+#productos{
+  width: 20%;
+  float: right;
+  margin-top: 40px;
+  margin-left: 20px;
+  border: 3px solid black;
+}
+#estructrura{
+  width: 20%;
+  /* float: right; */
+  /* margin-top: 40px; */
+  /* margin-left: 20px; */
+  border: 3px solid black;
+}
