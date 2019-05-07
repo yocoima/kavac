@@ -6,12 +6,18 @@ require_once 'views/layout/navbar.php';
 // require_once 'views/layout/estructura.php';
 require_once 'views/layout/sidebar.php';
 
+function show_error(){
+	$error = new errorController ();
+	$error->index();
+}
 
 if(isset($_GET['controller'])){
 	$nombre_controlador = $_GET['controller'].'Controller';
+
+}elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
+	$nombre_controlador = controller_default;
 }else{
-	$error = new errorController ();
-	$error->index();
+	show_error();
 }
 
 if(class_exists($nombre_controlador)){
@@ -20,12 +26,13 @@ if(class_exists($nombre_controlador)){
 	if(isset($_GET['action']) && method_exists($controlador, $_GET['action'])){
 		$action = $_GET['action'];
 		$controlador->$action();
+	}elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
+		$action_default = action_default;
+		$controlador->$action_default();		
 	}else{
-		$error = new errorController ();
-		$error->index();
+		show_error();
 	}
 }else{
-	$error = new errorController ();
-	$error->index();
+	show_error();
 }
 ?>

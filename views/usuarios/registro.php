@@ -3,7 +3,7 @@
   <h5>Registro de Usuario</h5>
   <hr>
   <div class="login">
-    <form action="index.php?controller=usuario&action=save" method="POST">
+    <form action="usuario/save" method="POST">
       <div class="form-group">
         <label for="Nombre">Nombre</label>
         <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre">
