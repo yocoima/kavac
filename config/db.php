@@ -1,4 +1,5 @@
 <?php
+// include 'file';
 
 class Database{
 
@@ -6,6 +7,7 @@ class Database{
     $bd= new mysqli ('localhost', 'root', 'Google1875','bd_kavac');
     $bd->query("SET NAMES 'UTF8'");
     return $bd;
+    var_dump($bd);
   }
 }
 

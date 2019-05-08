@@ -47,7 +47,7 @@ class Usuario{
     }
 
     public function save(){
-      $sql="INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getCorreo()}', '{$this->getClave()}')";
+      $sql="INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getCorreo()}', '{$this->getClave()}');";
       $save= $this->bd->query($sql);
       $result= false;
       if ($save) {

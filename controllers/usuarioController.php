@@ -16,9 +16,17 @@ class usuarioController{
       $usuario->setApellido($_POST['apellido']);
       $usuario->setCorreo($_POST['correo']);
       $usuario->setClave($_POST['clave']);
-      var_dump($usuario);
+      $save = $usuario->save();      
+
+      if ($save) {
+        echo "Usuario Creado";
+      }else {
+        echo "Error al guardar datos.";
+      }
+      var_dump($save);
     }
   }
 }
+
 
 ?>
