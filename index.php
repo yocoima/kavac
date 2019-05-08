@@ -1,5 +1,6 @@
 <?php
 require_once 'autoload.php';
+require_once 'config/db.php';
 require_once 'config/parameters.php';
 require_once 'views/layout/header.php';
 require_once 'views/layout/navbar.php';
@@ -28,7 +29,7 @@ if(class_exists($nombre_controlador)){
 		$controlador->$action();
 	}elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
 		$action_default = action_default;
-		$controlador->$action_default();		
+		$controlador->$action_default();
 	}else{
 		show_error();
 	}
