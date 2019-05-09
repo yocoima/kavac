@@ -16,6 +16,14 @@ body {
   margin-left: 20px;
   /* border: 3px solid black; */
 }
+
+.aceptado{
+  color: green;
+}
+.fallido{
+  color: red;
+}
+
 #registro{
   width: 70%;
   float: left;

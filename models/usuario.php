@@ -26,7 +26,7 @@ class Usuario{
       return $this->correo;
     }
     function getClave(){
-      return $this->clave;
+      return password_hash($this->bd->real_escape_string($this->clave), PASSWORD_BCRYPT, ['cost' =>4]);
     }
 
 
@@ -43,8 +43,8 @@ class Usuario{
       $this->correo = $this->bd->real_escape_string($correo);
     }
     function setClave($clave){
-      $this->clave = password_hash($this->bd->real_escape_string($clave), PASSWORD_BCRYPT, ['cost' =>4]);
-    }
+      $this->clave = $clave;
+    }    
 
     public function save(){
       $sql="INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getCorreo()}', '{$this->getClave()}');";
@@ -55,6 +55,38 @@ class Usuario{
       }
       return $result;
     }
+
+    public function login(){
+      $result= false;
+      $correo = $this->correo;
+      $clave = $this->clave;
+      $sql ="SELECT * FROM usuarios WHERE correo = '$correo'";
+      $login= $this->bd->query($sql);
+      if($login && $login->num_rows == 1) {
+        $usuario= $login->fetch_object();
+        $verify = password_verify($clave, $usuario->clave);
+        if ($verify) {
+            $result = $usuario;
+          }
+        }
+        return $result;
+      }
+
 }
 
 ?>
+
+<!-- public function login(){
+  $correo = $this->getCorreo();
+  $clave = $this->getClave();
+  $sql ="SELECT * FROM usuarios WHERE correo = '$correo'";
+  $login= $this->bd->query($sql);
+  $contador= mysqli_num_rows($login);
+  $usuario = mysqli_fetch_assoc($login);
+  $verify = password_verify($clave, $usuario['clave']);
+  $result = false;
+  if($contador == 1 && $verify) {
+    $result = true;
+  }
+  return $result;
+} -->
