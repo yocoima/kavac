@@ -16,15 +16,17 @@ class usuarioController{
       $usuario->setApellido($_POST['apellido']);
       $usuario->setCorreo($_POST['correo']);
       $usuario->setClave($_POST['clave']);
-      $save = $usuario->save();      
 
+      $save = $usuario->save();
       if ($save) {
-        echo "Usuario Creado";
+        $_SESSION['register']= "complete";
       }else {
-        echo "Error al guardar datos.";
+        $_SESSION['register']= "failed";
       }
-      var_dump($save);
+    }else{
+      $_SESSION['register']= "failed";
     }
+    header("Location:".base_url.'usuario/registro');
   }
 }
 
