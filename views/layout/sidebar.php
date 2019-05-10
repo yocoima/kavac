@@ -1,5 +1,4 @@
 <aside id="lateral">
-
   <h5>Incio de Sesion</h5>
   <hr>
   <div class="login">
@@ -21,7 +20,7 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   <?php else: ?>
-    <p> Bienvenido  <?= $_SESSION['login']->nombre?>  <?= $_SESSION['login']->apellido ?></p>
+    <p style="text-transform: capitalize;"> Bienvenido <?= $_SESSION['login']->nombre?>  <?= $_SESSION['login']->apellido ?></p>
   <?php endif; ?>
   </div>
 </aside>

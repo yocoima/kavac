@@ -44,7 +44,7 @@ class Usuario{
     }
     function setClave($clave){
       $this->clave = $clave;
-    }    
+    }
 
     public function save(){
       $sql="INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getCorreo()}', '{$this->getClave()}');";
@@ -71,22 +71,5 @@ class Usuario{
         }
         return $result;
       }
-
 }
-
 ?>
-
-<!-- public function login(){
-  $correo = $this->getCorreo();
-  $clave = $this->getClave();
-  $sql ="SELECT * FROM usuarios WHERE correo = '$correo'";
-  $login= $this->bd->query($sql);
-  $contador= mysqli_num_rows($login);
-  $usuario = mysqli_fetch_assoc($login);
-  $verify = password_verify($clave, $usuario['clave']);
-  $result = false;
-  if($contador == 1 && $verify) {
-    $result = true;
-  }
-  return $result;
-} -->

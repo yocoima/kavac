@@ -6,7 +6,6 @@
 <?php endif; ?>
 <?php Utils::deleteSession('register'); ?>
 
-
 <aside id="registro">
   <h5>Registro de Usuario</h5>
   <hr>

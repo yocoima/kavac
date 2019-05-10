@@ -10,25 +10,27 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?=base_url?>">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
-      <li class="nav-item dropdown">
-
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-      <button class="btn btn-primary" type="submit">Buscar</button>
-    </form>
+        <form class="form-inline my-2 my-lg-0">
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group">
+              <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            </li>
+            <li class="list-group">
+              <button class="form-control mr-sm-2 btn btn-primary" type="submit">Buscar</button>
+            </li>
+            <li class="list-group">
+              <a class="form-control mr-sm-2 btn btn-primary" href="<?=base_url?>usuario/registro" role="button">Registro</a>
+            </li>
+            <li class="list-group">
+              <a class="form-control mr-sm-2 btn btn-outline-dark" href="<?=base_url?>usuario/logout" role="button">Logout</a>
+            </li>
+        </form>
+    </ul>
   </div>
 </nav>

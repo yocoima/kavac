@@ -33,7 +33,6 @@ class usuarioController{
       $usuario = new Usuario();
       $usuario->setCorreo($_POST['correo']);
       $usuario->setClave($_POST['clave']);
-
       $login = $usuario->login();
       if ($login) {
         $_SESSION['login']= $login;
@@ -43,6 +42,12 @@ class usuarioController{
       header("Location:".base_url.'index.php');
     }
   }
+    public function logout(){
+      if(isset($_SESSION['login'])){
+        unset($_SESSION['login']);
+      }
+      header("Location:".base_url);
+    }
 }
 
 
