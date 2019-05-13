@@ -9,6 +9,7 @@ class usuarioController{
   public function registro(){
     require_once "views/usuarios/registro.php";
   }
+
   public function save(){
     if (isset($_POST)) {
       $usuario = new Usuario();
@@ -34,17 +35,25 @@ class usuarioController{
       $usuario->setCorreo($_POST['correo']);
       $usuario->setClave($_POST['clave']);
       $login = $usuario->login();
-      if ($login) {
+
+      if ($login && is_object($login)) {
         $_SESSION['login']= $login;
+        if ($login->rol == '1') {
+          $_SESSION['admin'] = true;
+          }
       }else {
-        $_SESSION['login']= "failed";
+        $_SESSION['error_login']= 'Indentifiacion fallida';
       }
-      header("Location:".base_url.'index.php');
     }
+    header("Location:".base_url);
   }
+
     public function logout(){
       if(isset($_SESSION['login'])){
         unset($_SESSION['login']);
+      }
+      if(isset($_SESSION['admin'])){
+        unset($_SESSION['admin']);
       }
       header("Location:".base_url);
     }

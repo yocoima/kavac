@@ -2,7 +2,7 @@
 <?php if(isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
   <strong>Registro completado</strong>
 <?php elseif(isset($_SESSION['register']) && $_SESSION['register'] == 'failed'):?>
-<strong>Registro Fallido</strong>
+<strong>El correo ya se encuentra registrado</strong>
 <?php endif; ?>
 <?php Utils::deleteSession('register'); ?>
 

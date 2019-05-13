@@ -3,8 +3,10 @@
 class productoController{
 
   public function index(){
-    echo "controlador usuarios, accion index";
+    require_once "views/productos/inicio.php";
   }
+
+
 
 }
 

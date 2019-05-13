@@ -7,6 +7,7 @@ class Usuario{
     private $apellido;
     private $correo;
     private $clave;
+    private $rol;
     private $bd;
 
     public function __construct(){
@@ -28,6 +29,9 @@ class Usuario{
     function getClave(){
       return password_hash($this->bd->real_escape_string($this->clave), PASSWORD_BCRYPT, ['cost' =>4]);
     }
+    function getRol(){
+      return $this->rol;
+    }
 
 
     function setId($id){
@@ -45,16 +49,29 @@ class Usuario{
     function setClave($clave){
       $this->clave = $clave;
     }
+    function setRol($rol){
+      $this->rol = $rol;
+    }
 
     public function save(){
-      $sql="INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getCorreo()}', '{$this->getClave()}');";
-      $save= $this->bd->query($sql);
-      $result= false;
-      if ($save) {
+      $chekMail = "SELECT * FROM usuarios WHERE correo = '{$this->getCorreo()}'";
+      $verificacion = $this->bd->query($chekMail);
+      $contador = mysqli_num_rows($verificacion);
+      $chequeado = false;
+      if ($contador == 0) {
+          $chequeado= true;
+      }else {
+          return $chequeado;
+        }
+        $sql="INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getCorreo()}', '{$this->getClave()}',2);";
+        $save= $this->bd->query($sql);
+        $result= false;
+        if ($save && $chequeado) {
           $result= true;
+        }
+        return $result;
       }
-      return $result;
-    }
+
 
     public function login(){
       $result= false;
@@ -66,7 +83,7 @@ class Usuario{
         $usuario= $login->fetch_object();
         $verify = password_verify($clave, $usuario->clave);
         if ($verify) {
-            $result = $usuario;
+           $result= $usuario;
           }
         }
         return $result;
