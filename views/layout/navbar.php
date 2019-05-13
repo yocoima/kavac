@@ -13,17 +13,20 @@
         <a class="nav-link" href="<?=base_url?>">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Ingresar Productos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Carrito de compras</a>
       </li>
     </ul>
         <form class="form-inline my-2 my-lg-0">
           <ul class="list-group list-group-horizontal">
-            <li class="list-group">
+            <!-- <li class="list-group">
               <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
             </li>
             <li class="list-group">
               <button class="form-control mr-sm-2 btn btn-primary" type="submit">Buscar</button>
-            </li>
+            </li> -->
             <li class="list-group">
               <a class="form-control mr-sm-2 btn btn-primary" href="<?=base_url?>usuario/registro" role="button">Registro</a>
             </li>

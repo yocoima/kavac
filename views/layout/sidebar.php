@@ -20,11 +20,22 @@
         <label for="exampleInputPassword1">Password</label>
         <input type="password" name="clave" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
       </div>
-      
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Iniciar</button>
     </form>
+    <br>
+
   <?php else: ?>
     <p style="text-transform: capitalize;"> Bienvenido <?= $_SESSION['login']->nombre?>  <?= $_SESSION['login']->apellido ?></p>
   <?php endif; ?>
   </div>
+  <ul>
+  <?php if (isset($_SESSION['admin'])): ?>
+    <li> <a href="<?=base_url?>producto/index">Ingresar Productos</a> </li>
+    <li> <a href="#">Gesionar Categorias</a> </li>
+  <?php endif; ?>
+    <li> <a href="#">Mis pedidos</a> </li>
+    <li> <a href="<?=base_url?>usuario/logout">Cerrar Sesion</a> </li>
+
+  </ul>
+
 </aside>
