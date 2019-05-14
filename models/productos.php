@@ -3,7 +3,7 @@
 class Producto {
 
   private $id;
-  private $id_producto;
+  private $descripcion;
   private $precio;
   private $stock;
   private $oferta;
@@ -17,8 +17,8 @@ class Producto {
   function getId(){
     return $this->id;
   }
-  function getIdProducto(){
-    return $this->id_producto;
+  function getDescripcion(){
+    return $this->descripcion;
   }
   function getPrecio(){
     return $this->precio;
@@ -37,19 +37,19 @@ class Producto {
   function setId($id){
     $this->id = $id;
   }
-  function setIdProducto(){
-    $this->id_producto = $id_producto;
+  function setDescripcion($descripcion){
+    $this->descripcion = $descripcion;
   }
-  function setPrecio(){
+  function setPrecio($precio){
     $this->precio = $precio;
   }
-  function setStock(){
+  function setStock($stock){
     $this->stock = $stock;
   }
-  function setOferta(){
+  function setOferta($oferta){
     $this->oferta = $oferta;
   }
-  function setImagen(){
+  function setImagen($imagen){
     $this->imagen = $imagen;
   }
 
@@ -59,6 +59,19 @@ class Producto {
     return $producto;
   }
 
+  public function ingresar(){
+    $sql = "INSERT INTO productos VALUES (NULL, '{$this->getDescripcion()}', '{$this->getPrecio()}', '{$this->getStock()}', '{$this->getOferta()}','{$this->getImagen()}');";
+    $ingresa= $this->bd->query($sql);
+  }
+
+
+
+
+
+  // public function borrar(){
+  //   $sql = "DELETE FROM productos WHERE `productos`.`id` = '{$this->getId()}'"
+  //   $elimina = $this->bd->query($sql);
+  // }
 
 
 }

@@ -5,9 +5,6 @@
   margin-left: 10;
 }
 
-body {
-  background: ;
-}
 
 #lateral{
   width: 20%;
@@ -17,33 +14,10 @@ body {
   /* border: 3px solid black; */
 }
 
-.aceptado{
-  color: green;
-}
-.fallido{
-  color: red;
-}
-
-
 #registro{
   width: 70%;
   float: left;
   margin-top: 40px;
   margin-left: 40px;
   /* border: 3px solid black; */
-}
-
-#productos{
-  width: 20%;
-  float: right;
-  margin-top: 40px;
-  margin-left: 20px;
-  border: 3px solid black;
-}
-#estructrura{
-  width: 20%;
-  /* float: right; */
-  /* margin-top: 40px; */
-  /* margin-left: 20px; */
-  border: 3px solid black;
 }

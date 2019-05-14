@@ -30,12 +30,11 @@
   </div>
   <ul>
   <?php if (isset($_SESSION['admin'])): ?>
-    <li> <a href="<?=base_url?>producto/index">Ingresar Productos</a> </li>
+    <li> <a href="<?=base_url?>productos/index">Ingresar Productos</a> </li>
+    <li> <a href="<?=base_url?>vitrina/index">Vitrina de mis productos</a> </li>
     <li> <a href="#">Gesionar Categorias</a> </li>
   <?php endif; ?>
     <li> <a href="#">Mis pedidos</a> </li>
     <li> <a href="<?=base_url?>usuario/logout">Cerrar Sesion</a> </li>
-
   </ul>
-
 </aside>

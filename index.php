@@ -7,7 +7,6 @@ require_once 'config/parameters.php';
 require_once 'helpers/utils.php';
 require_once 'views/layout/header.php';
 require_once 'views/layout/navbar.php';
-// require_once 'views/layout/estructura.php';
 require_once 'views/layout/sidebar.php';
 
 function show_error(){
