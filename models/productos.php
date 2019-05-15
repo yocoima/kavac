@@ -59,19 +59,35 @@ class Producto {
     return $producto;
   }
 
+  public function getOne(){
+    $producto = $this->bd->query("SELECT * FROM  productos WHERE id= {$this->getId()}");
+    return $producto->fetch_object();
+
+  }
+
   public function ingresar(){
     $sql = "INSERT INTO productos VALUES (NULL, '{$this->getDescripcion()}', '{$this->getPrecio()}', '{$this->getStock()}', '{$this->getOferta()}','{$this->getImagen()}');";
     $ingresa= $this->bd->query($sql);
   }
 
+  public function editar(){
+    $sql = "UPDATE productos SET descripcion= '{$this->getDescripcion()}', precio=  '{$this->getPrecio()}', stock= '{$this->getStock()}', oferta='{$this->getOferta()}' ";
+    if ($this->getImagen() !=null) {
+      $sql .=", imagen='{$this->getImagen()}'";
+    }
+      $sql .= ");";
+      $ingresa= $this->bd->query($sql);
+  }
 
-
-
-
-  // public function borrar(){
-  //   $sql = "DELETE FROM productos WHERE `productos`.`id` = '{$this->getId()}'"
-  //   $elimina = $this->bd->query($sql);
-  // }
+  public function eliminar(){
+    $sql = "DELETE FROM productos WHERE id={$this->id}";
+    $eliminar = $this->bd->query($sql);
+    $result = false;
+    if ($eliminar) {
+      $result = true;
+    }
+    return $result;
+  }
 
 
 }
