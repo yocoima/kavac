@@ -30,9 +30,7 @@
             <li class="list-group">
               <a class="form-control mr-sm-2 btn btn-primary" href="<?=base_url?>usuario/registro" role="button">Registro</a>
             </li>
-            <li class="list-group">
-              <a class="form-control mr-sm-2 btn btn-outline-dark" href="<?=base_url?>usuario/logout" role="button">Logout</a>
-            </li>
+            
         </form>
     </ul>
   </div>

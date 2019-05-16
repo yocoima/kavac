@@ -45,8 +45,8 @@ class usuarioController{
         $_SESSION['error_login']= 'Indentifiacion fallida';
       }
     }
-    header("Location:".base_url);
-  }
+header("Location:".base_url);
+}
 
     public function logout(){
       if(isset($_SESSION['login'])){

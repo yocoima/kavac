@@ -8,12 +8,25 @@
 
       <?php if(isset($edit) && isset($producto_edit)): ?>
       <h4>Editar Producto <?=$producto_edit->descripcion?></h4>
-      <?php $url_acction= base_url."productos/editar=&id".$producto_edit->id;?>
+      <?php $url_acction= base_url."productos/ingresar&id=".$producto_edit->id;?>
       <?php else:?>
       <h4>Ingresar Nuevos Productos</h4>
       <?php $url_acction= base_url."productos/ingresar";?>
       <?php endif;?>
       <hr><br>
+
+        <?php if(isset($_SESSION['edit']) && ($_SESSION['edit']) == 'complete'):?>
+          <div class="toast alert-success" id="toast1" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+              Producto Modificado con Exito.
+          </div>
+        <script>
+        $(document).ready(function(){
+          $('.toast').toast('show');
+        });
+        </script>
+      <?php endif; ?>
+      <?php Utils::deleteSession('edit'); ?>
+
 
       <div class="ingreso">
         <form action="<?=$url_acction?>" method="POST" enctype="multipart/form-data">
@@ -57,17 +70,21 @@
                    placeholder="Oferta"
                    value="<?=isset($producto_edit) && is_object($producto_edit) ? $producto_edit->oferta :'';?>">
           </div>
-          <div class="form-group">
-            <label for="imagen">Imagen</label>
-            <?php if(isset($producto_edit) && is_object($producto_edit) && !empty($producto_edit->imagen)): ?>
-                    <img src="<?=base_url?>uploads/img<?=$producto_edit->imagen?>" class="img-thumbnail">
-            <?php endif; ?>
-            <input type="file"
-                   name="imagen"
-                   class="form-control"
-                   id="exampleInputPassword1"
-                   placeholder="Imagen">
+
+          <label for="imagen">Imagen</label>
+          <?php if(isset($producto_edit) && is_object($producto_edit) && !empty($producto_edit->imagen)): ?>
+                  <img src="<?=base_url?>uploads/img<?=$producto_edit->imagen?>" class="img-thumbnail">
+          <?php endif; ?>
+          <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
           </div>
+          <div class="custom-file">
+            <input name="imagen" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Imagen</label>
+          </div>
+          </div>
+
           <button type="submit" value="ingresar" class="btn btn-primary">Ingresar</button>
         </form>
       </div>
