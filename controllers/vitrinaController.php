@@ -5,7 +5,8 @@ class vitrinaController{
 
 public function index(){
   $producto = new Producto();
-  $productos = $producto->getAll();
+  $productos = $producto->getAll();  
+
   require_once "views/vitrina/index.php";
   }
 }

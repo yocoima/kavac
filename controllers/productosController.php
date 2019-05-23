@@ -27,10 +27,10 @@ class productosController{
         $mimetype = $file['type'];
 
         if ($mimetype == "image/jpg" || $mimetype == "image/jpeg" || $mimetype == "image/png" || $mimetype == "image/git") {
-          if (!is_dir('uploads/img')) {
-            mkdir('uploads/img', 0777, true);
+          if (!is_dir('uploads/img/')) {
+            mkdir('uploads/img/', 0777, true);
           }
-          move_uploaded_file($file['tmp_name'], 'uploads/img'.$filename);
+          move_uploaded_file($file['tmp_name'], 'uploads/img/'.$filename);
           $producto->setImagen($filename);
         }
       }
