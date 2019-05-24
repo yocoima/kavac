@@ -26,53 +26,41 @@
   <h1 style="text-align: center;">Nuestros productos</h1>
   <br><hr>
 
-  <!-- ------------------------------------------------- -->
-
-
-
-
-
-
-  <!-- ------------------------------------------------- -->
-
-
-
-
-
   <!-- Button trigger modal -->
 <?php while ($prod = $productos->fetch_object()): ?>
+
   <div class="product">
     <div class="card" style="width: 15rem;">
       <?php if($prod->imagen != null): ?>
-  		<img class="card-img-top" src="<?=base_url?>uploads/img/<?=$prod->imagen ?>">
+  		<img style="width: 230px; height:230px;" class="card-img-top" src="<?=base_url?>uploads/img/<?=$prod->imagen ?>">
       <?php else: ?>
-      <img class="card-img-top" src="<?=base_url?>assets/img/img_no_disponible.jpeg" />
+      <img style="width: 230px; height:230px;" class="card-img-top" src="<?=base_url?>assets/img/img_no_disponible.jpeg" />
       <?php endif; ?>
       <h5 style="text-transform: capitalize;"><?= $prod->descripcion; ?></h5>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg#myModal<?=$prod->id ?>">
         Ver Mas
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+      <div class="modal fade bd-example-modal-lg" id="myModal<?=$prod->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"><?= $prod->descripcion; ?></h5>
+              <h5 style="text-transform: capitalize; text-align: left;" class="modal-title" id="exampleModalLabel"><?= $prod->descripcion; ?></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
               <?php if($prod->imagen != null): ?>
-          		<img class="img-fluid"  src="<?=base_url?>uploads/img/<?=$prod->imagen ?>">
+          		<img style="width: 600px; height:600px;" src="<?=base_url?>uploads/img/<?=$prod->imagen ?>">
               <?php else: ?>
-              <img class="img-fluid"  src="<?=base_url?>assets/img/img_no_disponible.jpeg" />
+              <img style="width: 600px; height:600px;" src="<?=base_url?>assets/img/img_no_disponible.jpeg" />
               <?php endif; ?>
-              <h6 style="text-transform: capitalize; text-align: left;">Precio :<?= $prod->precio; ?></h6>
-              <h6 style="text-transform: capitalize; text-align: left;">Estock :<?= $prod->stock; ?></h6>
-              <h6 style="text-transform: capitalize; text-align: left;">Oferta :<?= $prod->oferta; ?></h6>
-              <a href="#" class="btn btn-outline-primary">Comprar</a>
+              <h6 style="text-transform: capitalize; text-align: left;" >Precio :<?= $prod->precio; ?></h6>
+              <h6 style="text-transform: capitalize; text-align: left;" >Estock :<?= $prod->stock; ?></h6>
+              <h6 style="text-transform: capitalize; text-align: left;" >Oferta :<?= $prod->oferta; ?></h6>
+              <a href="<?=base_url?>carrito/añadir&id=<?=$prod->id?>" class="btn btn-outline-primary">Comprar</a>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -82,13 +70,6 @@
       </div>
     </div>
   </div>
-  <?php endwhile; ?>
-
-
-
-
-
-
-
+<?php endwhile; ?>
 
 </aside>
