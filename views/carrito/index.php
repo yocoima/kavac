@@ -20,20 +20,19 @@
 	<tr>
 		<td>
 			<?php if ($prod->imagen != null): ?>
-				<img style="width: 200px; height:200px;" class="img-thumbnail" src="<?= base_url ?>uploads/img/<?= $prod->imagen ?>"/>
+				<img style="width: 100px; height:100px;" class="img-thumbnail" src="<?= base_url ?>uploads/img/<?= $prod->imagen ?>"/>
 			<?php else: ?>
-				<img style="width: 200px; height:200px;" class="img-thumbnail" src="<?= base_url ?>assets/img/img_no_disponible.jpeg"/>
+				<img style="width: 100px; height:100px;" class="img-thumbnail" src="<?= base_url ?>assets/img/img_no_disponible.jpeg"/>
 			<?php endif; ?>
 		</td>
 		<td>
       <?=$prod->descripcion?>
 		</td>
 		<td>
-			<?=$prod->precio?>
+			<?=$prod->precio?> $
 		</td>
 		<td>
 			<?=$elemento['unidades']?>
-
 		</td>
     <td>
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -50,13 +49,20 @@
 
 	<?php endforeach; ?>
 </table>
+<hr>
+<div>
+  <a href="<?=base_url?>carrito/borrarTodos" class="button button-delete button-red">Vaciar carrito</a>
+</div>
+<br>
+<div>
+	<?php $stats = Utils::statsCarrito(); ?>
+	<h4>Precio total: <?=$stats['total']?> $</h4>
+</div>
+<div>
+  <a href="<?=base_url?>pedido/index" class="btn btn-secondary">Confirmar pedido</a>
+</div>
+
 <br/>
-<div>
-	<a href="<?=base_url?>carrito/borrarTodos" class="button button-delete button-red">Vaciar carrito</a>
-</div>
-<div>
-	<a href="<?=base_url?>pedido/hacer" class="button button-pedido">Hacer pedido</a>
-</div>
 
 <?php else: ?>
 	<p>El carrito está vacio, añade algun producto</p>
