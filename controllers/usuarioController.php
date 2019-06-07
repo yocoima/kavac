@@ -35,7 +35,6 @@ class usuarioController{
       $usuario->setCorreo($_POST['correo']);
       $usuario->setClave($_POST['clave']);
       $login = $usuario->login();
-
       if ($login && is_object($login)) {
         $_SESSION['login']= $login;
         if ($login->rol == '1') {

@@ -5,7 +5,19 @@ require_once 'models/pedido.php';
 class pedidoController{
 
   public function index(){
-  require_once 'views/pedido/index.php';
+    if (isset($_SESSION['login'])) {
+    $id_usuario = $_SESSION['login']->id;
+    $pedido = new Pedido();
+    $pedido->setId($id_usuario);
+    $pedidos = $pedido->getAddress();
+    $chequear = $pedido->chekAddress();
+      if ($chequear) {
+        $_SESSION['direccion']= "existe";
+      }else{
+        $_SESSION['direccion']="no existe";
+      }      
+    }
+    require_once 'views/pedido/index.php';
   }
 
   public function confirmar(){

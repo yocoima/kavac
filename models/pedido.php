@@ -102,6 +102,26 @@ class Pedido {
     return $result;
   }
 
+  // $direccion = $chequear->fetch_object();
+
+  public function getAddress(){
+    $sql = "SELECT * FROM direccion WHERE id_usuario = {$this->getId()}";
+    $chequear = $this->bd->query($sql);
+    return $chequear;
+  }
+
+  public function chekAddress(){
+    $sql = "SELECT * FROM direccion WHERE id_usuario = {$this->getId()}";
+    $chequear = $this->bd->query($sql);
+    $result = false;
+    $contador = mysqli_num_rows($chequear);
+    if ($contador > 0) {
+      $result = true;
+    }    
+    return $result;
+    }
+
+
 
 }
 

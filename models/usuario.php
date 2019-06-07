@@ -79,11 +79,13 @@ class Usuario{
       $clave = $this->clave;
       $sql ="SELECT * FROM usuarios WHERE correo = '$correo'";
       $login= $this->bd->query($sql);
-      if($login && $login->num_rows == 1) {
+      $contar = mysqli_num_rows($login);
+      // var_dump($contar);
+      if($contar === 1) {
         $usuario= $login->fetch_object();
         $verify = password_verify($clave, $usuario->clave);
         if ($verify) {
-           $result= $usuario;
+           $result= $usuario;           
           }
         }
         return $result;
